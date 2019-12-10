@@ -1,4 +1,4 @@
-Kada počinje godišnje doba zima?
+﻿Kada počinje godišnje doba zima?
 21.12.
 21.3.
 21.6.
@@ -98,3 +98,48 @@ Zvijezda
 Oblak
 Sunce
 Mjesec
+Što od navedenog nije Francuski grad?
+Bordeaux
+Vaduz
+Lyon
+Nice
+Tko je naslikao djelo "Zvjezdana noć"?
+Vincent Van Gogh
+Pablo Picasso
+Kazimir Maljevič
+Slava Raškaj
+Kojim se slovom u matematici označava skup cijelih brojeva?
+Q
+N
+Z
+I
+U kojoj državi živi Djed Božičnjak?
+U Danskoj
+U Islandu
+U Norveškoj
+U Finskoj
+Koje književno razdoblje se nalazi između romantizma i baroka?
+Renesansa
+Avangarda
+Realizam
+Klasicizam
+U kojoj se državi 2010. održalo SP u nogometu?
+U Francuskoj
+U Katru
+U JAR-u
+U Obali Bjelokosti
+Koji je od sljedećih kemijskih elemenata plemeniti plin?
+Bor
+Ksenon
+Radij
+Francij
+Koja automobilska industrija ima sjedište u Češkoj?
+Volvo
+Škoda
+Fiat
+Dacia
+Tko se sukobio s Rimljanima u Punskim ratovima?
+Asirci
+Grci
+Kartažani
+Feničani

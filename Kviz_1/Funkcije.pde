@@ -1,3 +1,4 @@
+//stvara pocetno stanje igre, odnosno resetira igru
 void pocetnoStanje() {
   indeksPitanja=0;
   status=uTijeku;
@@ -21,6 +22,7 @@ void pocetnoStanje() {
   startTime = millis();
 }
 
+//crta timer
 void drawTimer() {
   stroke(0,0,255);
   noFill();
@@ -34,6 +36,8 @@ void drawTimer() {
   text(time, width-85, height-52);
   textAlign(LEFT);
 }
+
+//crta zatamnjeni pravokutnik
 void drawHover() {
    if(mouseX>=31 && mouseX<=237 && mouseY>=63 && mouseY<=85){
       fill(120,70);
@@ -57,6 +61,7 @@ void drawHover() {
     }
 }
 
+//crta pravokutnik koji se kasnije oboja ovisno o tocnosti odgovora
 void drawBox(String text) {
   noStroke();
   switch(o){
@@ -83,6 +88,7 @@ void drawBox(String text) {
   }
 }
 
+//crta zavrsni zaslon
 void drawKraj() {
   textFont(createFont("SansSerif", 18));
   fill(11,138,6);
@@ -104,6 +110,7 @@ void drawKraj() {
   textFont(createFont("SansSerif", 18));
 }
 
+//zapisuje rezultate u datoteku ž
 void zapisiRezultat() {
   if(topDeset.size() < 10) {
      topDeset.append(tocnoOdg);

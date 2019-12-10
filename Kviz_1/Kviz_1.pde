@@ -9,17 +9,18 @@ int h =0;
 char o = '0';
 ArrayList<Pitanje> pomocnaLista = new ArrayList();
 
+//mjerenje vremena za timer
+int time = 30;
+int startTime = 0;
+int waitTime = 0;
+
 //status programa, opcije:
 final int uTijeku=0;
 final int kraj=1;
 final int odgovorenoPitanje=2;
 final int topRated =3;
-int time = 30;
-int startTime = 0;
-int waitTime = 0;
-
 //trenutni status označvam varijablom status
-int status = uTijeku; 
+int status = uTijeku;
 
 int vrijeme;
 int cekaj = 1500;
@@ -36,11 +37,13 @@ void setup(){
   poljePitanja = loadStrings("pitanja.txt");
   String[] tocni = loadStrings("odgovori.txt")[0].split(",");
   
+  //spremanje tocnih pitanja u niz tocniOdgovori
   tocniOdgovori = new int[tocni.length];
   for(int i = 0; i < tocni.length; i++) {
     tocniOdgovori[i] = Integer.parseInt(tocni[i]);
   }
   
+  //ucitavanje top deset do sada ostvarenih rezultata
   String[] rang = loadStrings("topDeset.txt");
   if(rang.length !=0) {
     for(int i = 0; i < rang.length; i++) {
@@ -61,6 +64,7 @@ void draw() {
   drawTimer();
     
   switch(status) {
+    //dok je igra u tijeku ispisuj pitanje s odgovorima
     case uTijeku:
       listaPitanja.get(indeksPitanja).display();
       drawHover(); 
@@ -70,6 +74,7 @@ void draw() {
         zapisiRezultat();
       }
       break;
+    //nakon sto je odabran odgovor pohrani pitanje u listu postavljenih pitanja i provjeri tocnost odgovora
     case odgovorenoPitanje:
       waitTime = millis();
       listaPitanja.get(indeksPitanja).display();
@@ -103,6 +108,7 @@ void draw() {
         zapisiRezultat();
       }
       break;
+    //ispisi zavrsni zaslon
     case kraj:
       drawKraj();
       break;
@@ -112,6 +118,7 @@ void draw() {
 void keyPressed()
 {
   switch(status) {
+    //ako je u tijeku igra i pritisnut je jedan od gumbova a,b,c,d provjeri odgovor
     case uTijeku:
       if(key>='a' && key <='d')
       {
@@ -120,6 +127,7 @@ void keyPressed()
         vrijeme = millis();
       }
       break;
+    //ako si na zavrsnom zaslonu, pritiskom na r resetira se igra
     case kraj:
       if(key=='r') {
           pocetnoStanje();
@@ -133,6 +141,7 @@ void keyPressed()
 void mousePressed()
 {
   switch(status) {
+    //ako je igra u tijeku i misem se predje preko odgovora pravokutnik se zatamni
     case uTijeku:
       if(mouseX>=31 && mouseX<=237 && mouseY>=63 && mouseY<=85){
         o = 'a';
