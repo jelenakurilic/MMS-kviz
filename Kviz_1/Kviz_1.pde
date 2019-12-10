@@ -32,6 +32,7 @@ IntList topDeset = new IntList();
 void setup(){
   size(800,400);
   
+  //ucitavanje pitanja i odgovora
   poljePitanja = loadStrings("pitanja.txt");
   String[] tocni = loadStrings("odgovori.txt")[0].split(",");
   
@@ -54,6 +55,7 @@ void setup(){
 void draw() {
   
   background(220);
+  textFont(createFont("SansSerif", 18));
   int ukupnoPitanja= listaPitanja.size();
   
   drawTimer();
@@ -72,14 +74,12 @@ void draw() {
       waitTime = millis();
       listaPitanja.get(indeksPitanja).display();
       //ako je tocno ----- inače ----
-      if(listaPitanja.get(indeksPitanja).check(o))
-      {
+      if(listaPitanja.get(indeksPitanja).check(o)) {
         fill(0,180,0,70);
         drawBox("+10");
         h=1;
       }
-      else
-      {
+      else{
         fill(180,0,0,70);
         drawBox("-5");
         h=0;
@@ -104,20 +104,8 @@ void draw() {
       }
       break;
     case kraj:
-      fill(11,138,6);
-      textSize(18);
-      text("Kviz je završio.Vaš rezultat je "+tocnoOdg+".", 100, 100);
-      text("Kliknite R za ponovo igranje",100,125);
-      int j = 0;
-      topDeset.sortReverse();
-      text("Top 10:", width-250, 100);
-      for(int i : topDeset) {
-        if(j==9)
-          text(++j+". "+i,width-250,100+25*j);
-        else
-          text("  "+(++j)+". "+i,width-250,100+25*j);
-      }
-      
+      drawKraj();
+      break;
   }
 }
 
@@ -132,23 +120,12 @@ void keyPressed()
         vrijeme = millis();
       }
       break;
-    case odgovorenoPitanje:
-      status = uTijeku;
-      indeksPitanja++;
-      if(indeksPitanja>listaPitanja.size()-1)
-      {
-        status = kraj;
-        tocnoOdg += time;
-        zapisiRezultat();
-      }
-      
-      break;
-     case kraj:
-       if(key=='r') {
+    case kraj:
+      if(key=='r') {
           pocetnoStanje();
-       }
-       break;
-     default:
+      }
+      break;
+    default:
        break;  
   }
 }
@@ -157,30 +134,21 @@ void mousePressed()
 {
   switch(status) {
     case uTijeku:
-    if(mouseX>=31 && mouseX<=237 && mouseY>=63 && mouseY<=85){
-      o = '1';
-    }
-    else if(mouseX>=31 && mouseX<=237 && mouseY>=113 && mouseY<=135){
-      o = '2';
-    }
-    else if(mouseX>=31 && mouseX<=237 && mouseY>=163 && mouseY<=185){
-      o = '3';
-    }
-    else if(mouseX>=31 && mouseX<=237 && mouseY>=213 && mouseY<=235){
-      o = '4';
-    }
-    else break;
-    status = odgovorenoPitanje;
-    vrijeme = millis();
-    break;
-    case odgovorenoPitanje:
-      status = uTijeku;
-      indeksPitanja++;
-      if(indeksPitanja>listaPitanja.size()-1)
-      {
-        status = kraj;
+      if(mouseX>=31 && mouseX<=237 && mouseY>=63 && mouseY<=85){
+        o = 'a';
       }
-      
+      else if(mouseX>=31 && mouseX<=237 && mouseY>=113 && mouseY<=135){
+        o = 'b';
+      }
+      else if(mouseX>=31 && mouseX<=237 && mouseY>=163 && mouseY<=185){
+        o = 'c';
+      }
+      else if(mouseX>=31 && mouseX<=237 && mouseY>=213 && mouseY<=235){
+        o = 'd';
+      }
+      else break;
+      status = odgovorenoPitanje;
+      vrijeme = millis();
       break;
      default:
       break;

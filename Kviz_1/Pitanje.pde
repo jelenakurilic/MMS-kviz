@@ -34,10 +34,10 @@ class Pitanje {
   }
   
   boolean check(char keyToTest) {
-    if(keyToTest=='1' && tocanOdgovor==1)  return true;
-    if(keyToTest=='2' && tocanOdgovor==2)  return true; 
-    if(keyToTest=='3' && tocanOdgovor==3)  return true; 
-    if(keyToTest=='4' && tocanOdgovor==4)  return true; 
+    if(keyToTest=='a' && tocanOdgovor==1)  return true;
+    if(keyToTest=='b' && tocanOdgovor==2)  return true; 
+    if(keyToTest=='c' && tocanOdgovor==3)  return true; 
+    if(keyToTest=='d' && tocanOdgovor==4)  return true; 
     return false;
   }
 }

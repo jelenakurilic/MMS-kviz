@@ -60,27 +60,48 @@ void drawHover() {
 void drawBox(String text) {
   noStroke();
   switch(o){
-    case '1':
+    case 'a':
       rect(31,63,204,22,7);
       stroke(0,180,0);
       text(text,236,80);
       break;
-    case '2':
+    case 'b':
       rect(31,113,204,22,7);
       stroke(0,180,0);
       text(text,236,130);
       break;
-    case '3':
+    case 'c':
       rect (31,163,204,22,7);
       stroke(0,180,0);
       text(text,236,180);
       break;
-    case '4':
+    case 'd':
       rect(31,213,204,22,7);
       stroke(0,180,0);
       text(text,236,230);
       break;
   }
+}
+
+void drawKraj() {
+  textFont(createFont("SansSerif", 18));
+  fill(11,138,6);
+  text("Kviz je završio.Vaš rezultat je "+tocnoOdg+".", 100, 100);
+  text("Kliknite R za ponovo igranje",100,125);
+  
+  int j = 0;
+  topDeset.sortReverse();
+  text("Top 10:", width-250, 100);
+  for(int i : topDeset) {
+    if(j==9)
+      text(++j+". "+i,width-250,100+25*j);
+    else
+      text("  "+(++j)+". "+i,width-250,100+25*j);
+  }
+  
+  textFont(createFont("orange-juice.ttf", 40));
+  text("KRAJ", 50, 50);
+  textFont(createFont("SansSerif", 18));
 }
 
 void zapisiRezultat() {
